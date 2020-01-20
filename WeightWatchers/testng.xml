@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="WeightWatchers">
 	<parameter name="baseUrl" value="https://www.weightwatchers.com/us/" />
+	<parameter name="OS" value="mac" />
 	<parameter name="zipCode" value="10011" />
 	<parameter name="day" value="Mon" />
 	<listeners>

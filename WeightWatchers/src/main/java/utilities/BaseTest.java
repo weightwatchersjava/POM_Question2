@@ -28,11 +28,16 @@ public abstract class BaseTest implements ISeleniumTest
 
 	@BeforeSuite (alwaysRun = true)
 	@Parameters({
-		"baseUrl"
+		"baseUrl","OS"
 	})
-	public void setUp(String baseUrl) throws Exception{
+	public void setUp(String baseUrl,String operatingSystem) throws Exception{
 		String path = System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver", path+"//library//chromedriver");
+		if(operatingSystem.equals("mac"))
+			System.setProperty("webdriver.chrome.driver", path+"//library//chromedriver");
+		else if(operatingSystem.equals("windows"))
+			System.setProperty("webdriver.chrome.driver", path+"//library//chromedriver.exe");
+		else
+			System.out.println("Chromedriver not supported");
 		driver = new ChromeDriver();	
 		if(driver == null) {
 			System.out.println("The driver could not be intialised");
